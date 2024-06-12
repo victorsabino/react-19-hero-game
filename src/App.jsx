@@ -15,7 +15,7 @@ const App = () => {
     setTimeout(() => {
       setShowStory(false);
       setGameStarted(true);
-    }, 10000);  // Show story for 10 seconds
+    }, 30000);  // Show story for 10 seconds
   };
 
   const skipStory = () => {

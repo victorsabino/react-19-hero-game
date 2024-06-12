@@ -8,7 +8,7 @@ const reactConcepts = [
     return result;
   };`,
       symbol: "🔧",
-      effect: "Optimization"
+      effect: "Optimization" // Assuming Optimization doesn't have a corresponding attack
     },
     {
       name: "use() Hook",
@@ -38,7 +38,7 @@ const reactConcepts = [
     );
   };`,
       symbol: "🔄",
-      effect: "Data Fetch"
+      effect: "Fire Wave" // Updated to link to Fire Wave
     },
     {
       name: "Server and Client Directives",
@@ -64,7 +64,7 @@ const reactConcepts = [
     );
   };`,
       symbol: "🖥️",
-      effect: "Hybrid Rendering"
+      effect: "Tornado" // Updated to link to Tornado
     },
     {
       name: "Form Actions",
@@ -85,7 +85,7 @@ const reactConcepts = [
     </form>
   );`,
       symbol: "📝",
-      effect: "Form Handling"
+      effect: "Explosion" // Updated to link to Explosion
     },
     {
       name: "useFormState() Hook",
@@ -109,7 +109,7 @@ const reactConcepts = [
     </form>
   );`,
       symbol: "📋",
-      effect: "Form State"
+      effect: "Ice Blast" // Updated to link to Ice Blast
     },
     {
       name: "useFormStatus() Hook",
@@ -126,7 +126,7 @@ const reactConcepts = [
     );
   };`,
       symbol: "⏳",
-      effect: "Form Status"
+      effect: "Lightning Strike" // Updated to link to Lightning Strike
     },
     {
       name: "useOptimistic() Hook",
@@ -158,7 +158,7 @@ const reactConcepts = [
     </form>
   );`,
       symbol: "💫",
-      effect: "Optimistic UI"
+      effect: "Wind Blast" // Updated to link to Wind Blast
     },
     {
       name: "Document Metadata",
@@ -169,7 +169,7 @@ const reactConcepts = [
     <h1>Document Metadata Example</h1>
   </>;`,
       symbol: "📝",
-      effect: "SEO"
+      effect: "Earthquake" // Updated to link to Earthquake
     },
     {
       name: "Simplified Ref Handling",
@@ -190,7 +190,7 @@ const reactConcepts = [
     );
   };`,
       symbol: "🔗",
-      effect: "Ref Handling"
+      effect: "Death Ray" // Updated to link to Death Ray
     }
   ];
   

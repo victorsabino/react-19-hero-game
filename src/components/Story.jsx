@@ -24,8 +24,7 @@ const Story = ({ skipStory }) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      skipStory();
-    }, 60000); // Automatically skip after 30 seconds
+    }, 240000); // Automatically skip after 30 seconds
 
     return () => clearTimeout(timer);
   }, [skipStory]);

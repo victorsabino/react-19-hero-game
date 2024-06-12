@@ -63,6 +63,7 @@ const Game = () => {
           setIsModalOpen(true);
           newConceptsPos.splice(collectedConceptIndex, 1);
           newCurrentPower = attackData.find(a => a.name === concept.effect);
+          console.log({newCurrentPower, attackData, concept})
         }
 
         return {
@@ -87,32 +88,77 @@ const Game = () => {
   const handleSpacebarPress = () => {
     setGameState(prevState => {
       if (!prevState.currentPower) return prevState;
-
+    
       const { effect, symbol, name } = prevState.currentPower;
       const effectArea = activatePower(name, prevState.playerPos, width, height);
-
+    
       let newGrid = [...prevState.grid];
-      effectArea.forEach(([x, y]) => {
-        if (newGrid[y] && newGrid[y][x]) {
-          newGrid[y][x] = symbol;
-        }
-      });
-
       let newEnemiesPos = [...prevState.enemiesPos];
-      effectArea.forEach(([x, y]) => {
-        const enemyIndex = newEnemiesPos.findIndex(pos => pos[0] === x && pos[1] === y);
-        if (enemyIndex !== -1) {
-          newEnemiesPos.splice(enemyIndex, 1);
-          prevState.score += 100;
-        }
-      });
-
-      return {
+    
+      // Function to apply effect and update grid
+      const applyEffect = (grid, enemiesPos, effectArea, symbol) => {
+        effectArea.forEach(([x, y]) => {
+          if (grid[y] && grid[y][x]) {
+            grid[y][x] = symbol;
+          }
+        });
+    
+        effectArea.forEach(([x, y]) => {
+          const enemyIndex = enemiesPos.findIndex(pos => pos[0] === x && pos[1] === y);
+          if (enemyIndex !== -1) {
+            enemiesPos.splice(enemyIndex, 1);
+            prevState.score += 100;
+          }
+        });
+    
+        return { grid, enemiesPos };
+      };
+    
+      // Initial application of the effect
+      let result = applyEffect(newGrid, newEnemiesPos, effectArea, symbol);
+      newGrid = result.grid;
+      newEnemiesPos = result.enemiesPos;
+    
+      // Set initial state update
+      const updateState = {
         ...prevState,
         enemiesPos: newEnemiesPos,
         grid: newGrid,
         currentPower: null,
       };
+    
+      // Schedule lingering effect
+      const lingerDuration = 1000; // Linger for half a second
+      const interval = 50; // Interval for reapplying the effect
+    
+      const lingerEffect = () => {
+        setGameState(prevState => {
+          if (!prevState.currentPower) return prevState;
+    
+          const { effectArea, symbol } = prevState.currentPower;
+          let newGrid = [...prevState.grid];
+          let newEnemiesPos = [...prevState.enemiesPos];
+    
+          // Reapply effect
+          let result = applyEffect(newGrid, newEnemiesPos, effectArea, symbol);
+          newGrid = result.grid;
+          newEnemiesPos = result.enemiesPos;
+    
+          return {
+            ...prevState,
+            enemiesPos: newEnemiesPos,
+            grid: newGrid,
+          };
+        });
+      };
+    
+      // Set interval for the lingering effect
+      const intervalId = setInterval(lingerEffect, interval);
+    
+      // Clear the interval after the linger duration
+      setTimeout(() => clearInterval(intervalId), lingerDuration);
+    
+      return updateState;
     });
   };
 
