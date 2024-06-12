@@ -1,0 +1,45 @@
+.game-over-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: black;
+  font-family: 'Press Start 2P', cursive; /* Use a pixel font for a retro look */
+}
+
+.error-message {
+  color: red;
+  font-size: 1.2em;
+  margin-bottom: 2em;
+  white-space: pre-wrap;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-item {
+  color: yellow;
+  font-size: 2em;
+  margin: 1em 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-item .arrow {
+  margin: 0 1em;
+}
+
+.menu-item:hover {
+  color: lime;
+}
+
+.menu-item:active {
+  color: orange;
+}

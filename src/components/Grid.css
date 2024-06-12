@@ -1,0 +1,51 @@
+.grid-row {
+  display: flex;
+}
+
+.grid-cell {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  text-align: center;
+}
+
+.player {
+  color: blue;
+}
+
+.enemy {
+  color: red;
+}
+
+.concept {
+  color: yellow;
+}
+
+.item {
+  color: magenta;
+}
+
+.power {
+  color: green;
+}
+
+.game-info {
+  margin-top: 10px;
+  color: white;
+}
+
+.menu, .story {
+  text-align: center;
+  margin-top: 50px;
+}
+
+button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.story p {
+  margin: 5px 0;
+}
