@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import './Story.css';
+import music from '../assets/audio.mp3';
 
 const Story = ({ skipStory }) => {
   const story = [
@@ -23,10 +24,18 @@ const Story = ({ skipStory }) => {
   ];
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-    }, 240000); // Automatically skip after 30 seconds
+    const audio = new Audio(music);
+    audio.play();
 
-    return () => clearTimeout(timer);
+    const timer = setTimeout(() => {
+      skipStory();
+    }, 30000); // Automatically skip after 30 seconds
+
+    return () => {
+      audio.pause();
+      audio.currentTime = 0;
+      clearTimeout(timer);
+    };
   }, [skipStory]);
 
   return (
